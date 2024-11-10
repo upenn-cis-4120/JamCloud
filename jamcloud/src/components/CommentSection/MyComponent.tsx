@@ -24,31 +24,7 @@ const comments: Comment[] = [
 ];
 
 const MyComponent: React.FC = () => {
-    const [comments, setComments] = useState();
 
-    useEffect(() => {
-        const defaultComments =   [{
-            text: "Love the vibe you're going for here! The chords are 🔥. You're definitely the modern day Phill Collins.",
-            author: "Srikar",
-            date: "10/23/2024",
-            time: "8:13PM"
-          },
-          {
-            text: "Could you try recording a second take of the solo with a bit more distortion? It might give the section more edge and make it stand out, adding that extra punch we need to drive the energy home.",
-            author: "Lincoln",
-            date: "10/21/2024",
-            time: "2:50AM"
-          },
-          {
-            text: "Thinking of adding a jazzy influence to this part. It could give the song a unique flair without shifting the vibe too much",
-            author: "Karthik",
-            date: "10/19/2024",
-            time: "4:27PM"
-          }
-        ];
-
-        setComments(defaultComments);
-    }, []);
 
   return (
     <main className="flex overflow-hidden flex-col pb-9 mx-auto w-full font-semibold bg-stone-900 max-w-[480px] rounded-[34px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
