@@ -8,7 +8,7 @@ interface CommentCardProps {
 const CommentCard: React.FC<CommentCardProps> = ({ comment }) => {
   return (
     <>
-      <div className="overflow-hidden px-3 py-4 max-w-full rounded-3xl bg-neutral-600 w-[353px]">
+      <div className="px-3 py-4 max-w-full rounded-3xl bg-neutral-600 w-[353px] break-words">
         {comment.text}
       </div>
       <div className="flex gap-5 justify-between self-center w-full text-xs max-w-[318px] text-neutral-600">

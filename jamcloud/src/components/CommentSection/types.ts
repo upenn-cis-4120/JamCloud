@@ -3,4 +3,8 @@ export interface Comment {
     author: string;
     date: string;
     time: string;
+    timeRange?: {
+      start: number;
+      end: number;
+    };
   }

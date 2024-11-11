@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 
 interface CommentPopupProps {
   onClose: () => void;
+  onSubmit: (text: string) => void;
 }
 
-const CommentPopup: React.FC<CommentPopupProps> = ({ onClose }) => {
+const CommentPopup: React.FC<CommentPopupProps> = ({ onClose, onSubmit }) => {
   const [comment, setComment] = useState('');
 
   const handleSubmit = () => {
-    // TODO: Implement comment submission logic
-    console.log('Submitting comment:', comment);
-    onClose();
+    if (comment.trim()) {
+      onSubmit(comment.trim());
+      setComment('');
+    }
   };
 
   return (
