@@ -13,7 +13,7 @@ const initialThreads: Thread[] = [
     comments: [
       {
         id: '1',
-        text: "Love the vibe you're going for here! The chords are 🔥. You're definitely the modern day Phill Collins.",
+        text: "The groove is impeccable! The snare hits are so crisp. 🔥",
         author: "Srikar",
         date: "10/23/2024",
         time: "8:13PM"
@@ -27,7 +27,7 @@ const initialThreads: Thread[] = [
     comments: [
       {
         id: '2',
-        text: "Could you try recording a second take of the solo with a bit more distortion?",
+        text: "Could you try a slightly slower tempo on the fills?",
         author: "Lincoln",
         date: "10/21/2024",
         time: "2:50AM"
@@ -41,7 +41,7 @@ const initialThreads: Thread[] = [
     comments: [
       {
         id: '3',
-        text: "The bass line here is incredible! What pedal are you using for that warm tone?",
+        text: "Love the use of the hi-hats here! Which drum kit are you using?",
         author: "Maya",
         date: "10/24/2024",
         time: "3:30PM"
@@ -55,7 +55,7 @@ const initialThreads: Thread[] = [
     comments: [
       {
         id: '4',
-        text: "This transition is a bit choppy, could you try to smooth it out?",
+        text: "The transition from the toms to the crash feels a bit rushed. Thoughts?",
         author: "Alex",
         date: "10/24/2024",
         time: "9:45AM"
@@ -64,7 +64,7 @@ const initialThreads: Thread[] = [
   }
 ];
 
-const MyComponent: React.FC = () => {
+const DrumsCommentsPage: React.FC = () => {
   const [threads, setThreads] = useState<Thread[]>(initialThreads);
   const [isSelecting, setIsSelecting] = useState(false);
   const [selectedRange, setSelectedRange] = useState<{ start: number, end: number } | null>(null);
@@ -155,10 +155,10 @@ const MyComponent: React.FC = () => {
             <select
               className="p-2 bg-zinc-800 text-white rounded-md"
               onChange={(e) => navigate(e.target.value)}
-              defaultValue="/comments"
+              defaultValue="/drumcomments"
             >
-              <option value="/comments">Guitar 1</option>
               <option value="/drumcomments">Drums</option>
+              <option value="/comments">Guitar 1</option>
               {/* Add more pages here */}
             </select>
           </div>
@@ -204,4 +204,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default DrumsCommentsPage;
