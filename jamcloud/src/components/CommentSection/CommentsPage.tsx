@@ -4,11 +4,12 @@ import { Comment, Thread } from './types.ts';
 import CommentPopup from './CommentPopup.tsx';
 import WaveformSelector from './WaveformSelector.tsx';
 import { useNavigate } from "react-router-dom";
+import AudioWaveform from './AudioWaveform.tsx';
 
 const initialThreads: Thread[] = [
   {
     id: '1',
-    timeRange: { start: 0.2, end: 0.3 },
+    timeRange: { start: 20, end: 31 },
     createdAt: '2024-10-23T20:13:00',
     comments: [
       {
@@ -22,7 +23,7 @@ const initialThreads: Thread[] = [
   },
   {
     id: '2',
-    timeRange: { start: 0.5, end: 0.6 },
+    timeRange: { start: 24, end: 29 },
     createdAt: '2024-10-21T02:50:00',
     comments: [
       {
@@ -36,7 +37,7 @@ const initialThreads: Thread[] = [
   },
   {
     id: '3',
-    timeRange: { start: 1.2, end: 1.4 },
+    timeRange: { start: 112, end: 117 },
     createdAt: '2024-10-24T15:30:00',
     comments: [
       {
@@ -50,7 +51,7 @@ const initialThreads: Thread[] = [
   },
   {
     id: '4',
-    timeRange: { start: 2.0, end: 2.1 },
+    timeRange: { start: 164, end: 170 },
     createdAt: '2024-10-24T09:45:00',
     comments: [
       {
@@ -64,7 +65,7 @@ const initialThreads: Thread[] = [
   }
 ];
 
-const MyComponent: React.FC = () => {
+const CommentsPage: React.FC = () => {
   const [threads, setThreads] = useState<Thread[]>(initialThreads);
   const [isSelecting, setIsSelecting] = useState(false);
   const [selectedRange, setSelectedRange] = useState<{ start: number, end: number } | null>(null);
@@ -170,7 +171,8 @@ const MyComponent: React.FC = () => {
           className="object-contain shrink-0 aspect-[0.97] w-[66px]"
         />
       </header>
-      <WaveformSelector
+      <AudioWaveform
+        audioUrl="/audio/Mk.gee - ROCKMAN (Official Audio) [ ezmp3.cc ].mp3"
         isSelecting={isSelecting}
         onSelectionComplete={handleSelectionComplete}
         onCancel={() => setIsSelecting(false)}
@@ -204,4 +206,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default CommentsPage;
