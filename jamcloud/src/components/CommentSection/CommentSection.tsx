@@ -17,7 +17,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
         <div key={thread.id} className="mb-8">
           {/* Time range indicator */}
           <div className="text-xs text-neutral-400 mb-2">
-            {`${(thread.timeRange.start * 100).toFixed(1)}% - ${(thread.timeRange.end * 100).toFixed(1)}%`}
+            {`${String(Math.floor(thread.timeRange.start / 60)).padStart(2, '0')}:${String((thread.timeRange.start % 60).toFixed(0)).padStart(2, '0')} - ${String(Math.floor(thread.timeRange.end / 60)).padStart(2, '0')}:${String((thread.timeRange.end % 60).toFixed(0)).padStart(2, '0')}`}
           </div>
           
           {/* Thread comments */}
