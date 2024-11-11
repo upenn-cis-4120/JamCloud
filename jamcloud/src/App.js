@@ -2,7 +2,8 @@
 import './App.css';
 
 import React from 'react';
-import  MyComponent from './components/CommentSection/MyComponent.tsx'; 
+import  CommentsPage from './components/CommentSection/CommentsPage.tsx'; 
+// import TrackView from './components/TracksPage/TrackView.tsx';
 // import "./components/CommentSection/MyComponent.tsx";
 
 // import { MyComponent } from '.components/Comments/MyComponent/index';
@@ -10,7 +11,7 @@ import  MyComponent from './components/CommentSection/MyComponent.tsx';
 function App() {
   return (
     <div className="App">
-      <MyComponent />
+      <CommentsPage />
     </div>
   );
 }

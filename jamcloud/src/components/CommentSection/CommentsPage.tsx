@@ -1,49 +1,129 @@
 import React, { useEffect, useState } from "react";
 import CommentSection from './CommentSection.tsx';
-import { Comment } from './types';
+import { Comment, Thread } from './types.ts';
 import CommentPopup from './CommentPopup.tsx';
 import WaveformSelector from './WaveformSelector.tsx';
 
-const initialComments: Comment[] = [
+const initialThreads: Thread[] = [
   {
-    text: "Love the vibe you're going for here! The chords are 🔥. You're definitely the modern day Phill Collins.",
-    author: "Srikar",
-    date: "10/23/2024",
-    time: "8:13PM"
+    id: '1',
+    timeRange: { start: 0.2, end: 0.3 },
+    createdAt: '2024-10-23T20:13:00',
+    comments: [
+      {
+        id: '1',
+        text: "Love the vibe you're going for here! The chords are 🔥. You're definitely the modern day Phill Collins.",
+        author: "Srikar",
+        date: "10/23/2024",
+        time: "8:13PM"
+      }
+    ]
   },
   {
-    text: "Could you try recording a second take of the solo with a bit more distortion? It might give the section more edge and make it stand out, adding that extra punch we need to drive the energy home.",
-    author: "Lincoln",
-    date: "10/21/2024",
-    time: "2:50AM"
+    id: '2',
+    timeRange: { start: 0.5, end: 0.6 },
+    createdAt: '2024-10-21T02:50:00',
+    comments: [
+      {
+        id: '2',
+        text: "Could you try recording a second take of the solo with a bit more distortion?",
+        author: "Lincoln",
+        date: "10/21/2024",
+        time: "2:50AM"
+      }
+    ]
   },
   {
-    text: "Thinking of adding a jazzy influence to this part. It could give the song a unique flair without shifting the vibe too much",
-    author: "Karthik",
-    date: "10/19/2024",
-    time: "4:27PM"
+    id: '3',
+    timeRange: { start: 1.2, end: 1.4 },
+    createdAt: '2024-10-24T15:30:00',
+    comments: [
+      {
+        id: '3',
+        text: "The bass line here is incredible! What pedal are you using for that warm tone?",
+        author: "Maya",
+        date: "10/24/2024",
+        time: "3:30PM"
+      }
+    ]
+  },
+  {
+    id: '4',
+    timeRange: { start: 2.0, end: 2.1 },
+    createdAt: '2024-10-24T09:45:00',
+    comments: [
+      {
+        id: '4',
+        text: "This transition is a bit choppy, could you try to smooth it out?",
+        author: "Alex",
+        date: "10/24/2024",
+        time: "9:45AM"
+      }
+    ]
   }
 ];
 
 const MyComponent: React.FC = () => {
-  const [comments, setComments] = useState<Comment[]>(initialComments);
+  const [threads, setThreads] = useState<Thread[]>(initialThreads);
   const [isSelecting, setIsSelecting] = useState(false);
   const [selectedRange, setSelectedRange] = useState<{ start: number, end: number } | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedCommentId, setSelectedCommentId] = useState<string | null>(null);
 
-  const handleAddComment = (text: string) => {
+  const handleAddThread = (text: string) => {
     if (selectedRange) {
-      const newComment: Comment = {
-        text,
-        author: "You",
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        timeRange: selectedRange
+      const newThread: Thread = {
+        id: Date.now().toString(),
+        timeRange: selectedRange,
+        createdAt: new Date().toISOString(),
+        comments: [{
+          id: Date.now().toString(),
+          text,
+          author: "You",
+          date: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        }]
       };
-      setComments([newComment, ...comments]);
+      
+      const updatedThreads = [...threads, newThread].sort((a, b) => 
+        a.timeRange.start - b.timeRange.start
+      );
+      
+      setThreads(updatedThreads);
       setSelectedRange(null);
       setIsPopupOpen(false);
     }
+  };
+
+  const handleAddReply = (text: string) => {
+    if (selectedCommentId) {
+      const updatedThreads = threads.map(thread => {
+        const hasComment = thread.comments.some(comment => comment.id === selectedCommentId);
+        if (hasComment) {
+          return {
+            ...thread,
+            comments: [...thread.comments, {
+              id: Date.now().toString(),
+              text,
+              author: "You",
+              date: new Date().toLocaleDateString(),
+              time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+              parentCommentId: selectedCommentId
+            }]
+          };
+        }
+        return thread;
+      });
+
+      setThreads(updatedThreads);
+      setSelectedCommentId(null);
+      setIsPopupOpen(false);
+    }
+  };
+
+  const handleCommentContextMenu = (commentId: string) => {
+    setSelectedCommentId(commentId);
+    setIsPopupOpen(true);
   };
 
   const handleSelectionComplete = (start: number, end: number) => {
@@ -92,7 +172,8 @@ const MyComponent: React.FC = () => {
         onCancel={() => setIsSelecting(false)}
       />
       <CommentSection
-        comments={comments}
+        threads={threads}
+        onCommentContextMenu={handleCommentContextMenu}
       />
       <button
         onClick={handleCommentButtonClick}
@@ -107,8 +188,12 @@ const MyComponent: React.FC = () => {
       </button>
       {isPopupOpen && (
         <CommentPopup
-          onClose={() => setIsPopupOpen(false)}
-          onSubmit={handleAddComment}
+          onClose={() => {
+            setIsPopupOpen(false);
+            setSelectedCommentId(null);
+          }}
+          onSubmit={selectedCommentId ? handleAddReply : handleAddThread}
+          mode={selectedCommentId ? 'reply' : 'new'}
         />
       )}
     </main>
