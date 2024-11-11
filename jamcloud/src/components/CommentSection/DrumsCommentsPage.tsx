@@ -4,6 +4,7 @@ import { Comment, Thread } from './types.ts';
 import CommentPopup from './CommentPopup.tsx';
 import WaveformSelector from './WaveformSelector.tsx';
 import { useNavigate } from "react-router-dom";
+import AudioWaveform from './AudioWaveform.tsx';
 
 const initialThreads: Thread[] = [
   {
@@ -170,7 +171,8 @@ const DrumsCommentsPage: React.FC = () => {
           className="object-contain shrink-0 aspect-[0.97] w-[66px]"
         />
       </header>
-      <WaveformSelector
+      <AudioWaveform
+        audioUrl="/audio/Mk.gee - ROCKMAN (Official Audio) [ ezmp3.cc ].mp3"
         isSelecting={isSelecting}
         onSelectionComplete={handleSelectionComplete}
         onCancel={() => setIsSelecting(false)}
