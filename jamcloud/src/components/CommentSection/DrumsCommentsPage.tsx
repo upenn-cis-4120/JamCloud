@@ -9,7 +9,7 @@ import AudioWaveform from './AudioWaveform.tsx';
 const initialThreads: Thread[] = [
   {
     id: '1',
-    timeRange: { start: 0.2, end: 0.3 },
+    timeRange: { start: 21, end: 32 },
     createdAt: '2024-10-23T20:13:00',
     comments: [
       {
@@ -23,7 +23,7 @@ const initialThreads: Thread[] = [
   },
   {
     id: '2',
-    timeRange: { start: 0.5, end: 0.6 },
+    timeRange: { start: 15, end: 17 },
     createdAt: '2024-10-21T02:50:00',
     comments: [
       {
@@ -37,7 +37,7 @@ const initialThreads: Thread[] = [
   },
   {
     id: '3',
-    timeRange: { start: 1.2, end: 1.4 },
+    timeRange: { start: 35, end: 42 },
     createdAt: '2024-10-24T15:30:00',
     comments: [
       {
@@ -51,7 +51,7 @@ const initialThreads: Thread[] = [
   },
   {
     id: '4',
-    timeRange: { start: 2.0, end: 2.1 },
+    timeRange: { start: 48.0, end: 51 },
     createdAt: '2024-10-24T09:45:00',
     comments: [
       {
@@ -144,13 +144,18 @@ const DrumsCommentsPage: React.FC = () => {
       <header className="flex overflow-hidden gap-9 items-start pt-3 pr-3 w-full border border-black border-solid bg-neutral-600">
         <div className="flex flex-col grow shrink-0 mt-3 basis-0 w-fit">
           <div className="flex gap-5 justify-between items-start text-3xl whitespace-nowrap text-slate-50">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/13ff8761494279e119e8c98ea86aafb2ec066ec0806bf371a4facfa96ae90393?placeholderIfAbsent=true&apiKey=c282f1c67bc141efb15181803dafd5ff"
-              alt=""
-              className="object-contain shrink-0 aspect-[0.93] w-[39px]"
-            />
-            <h1 className="mt-2.5">COMMENTS</h1>
+            <button
+              onClick={() => navigate('/')}
+              className="flex items-center gap-5"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/13ff8761494279e119e8c98ea86aafb2ec066ec0806bf371a4facfa96ae90393?placeholderIfAbsent=true&apiKey=c282f1c67bc141efb15181803dafd5ff"
+                alt=""
+                className="object-contain shrink-0 aspect-[0.93] w-[39px]"
+              />
+              <h1 className="mt-2.5">COMMENTS</h1>
+            </button>
           </div>
           <div className="flex overflow-hidden gap-6 self-start pl-6 text-sm text-white rounded-md border border-black border-solid bg-zinc-800">
             <select
@@ -172,7 +177,7 @@ const DrumsCommentsPage: React.FC = () => {
         />
       </header>
       <AudioWaveform
-        audioUrl="/audio/Mk.gee - ROCKMAN (Official Audio) [ ezmp3.cc ].mp3"
+        audioUrl="/audio/drums.mp3"
         isSelecting={isSelecting}
         onSelectionComplete={handleSelectionComplete}
         onCancel={() => setIsSelecting(false)}

@@ -14,7 +14,7 @@ const initialThreads: Thread[] = [
     comments: [
       {
         id: '1',
-        text: "Love the vibe you're going for here! The chords are 🔥. You're definitely the modern day Phill Collins.",
+        text: "Love the vibe you're going for here! I think one of the chords is incorrect.",
         author: "Srikar",
         date: "10/23/2024",
         time: "8:13PM"
@@ -42,7 +42,7 @@ const initialThreads: Thread[] = [
     comments: [
       {
         id: '3',
-        text: "The bass line here is incredible! What pedal are you using for that warm tone?",
+        text: "The tone of the guitar here is incredible! What pedal are you using for that warm tone?",
         author: "Maya",
         date: "10/24/2024",
         time: "3:30PM"
@@ -144,13 +144,18 @@ const CommentsPage: React.FC = () => {
       <header className="flex overflow-hidden gap-9 items-start pt-3 pr-3 w-full border border-black border-solid bg-neutral-600">
         <div className="flex flex-col grow shrink-0 mt-3 basis-0 w-fit">
           <div className="flex gap-5 justify-between items-start text-3xl whitespace-nowrap text-slate-50">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/13ff8761494279e119e8c98ea86aafb2ec066ec0806bf371a4facfa96ae90393?placeholderIfAbsent=true&apiKey=c282f1c67bc141efb15181803dafd5ff"
-              alt=""
-              className="object-contain shrink-0 aspect-[0.93] w-[39px]"
-            />
-            <h1 className="mt-2.5">COMMENTS</h1>
+            <button
+              onClick={() => navigate('/')}
+              className="flex items-center gap-5"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/13ff8761494279e119e8c98ea86aafb2ec066ec0806bf371a4facfa96ae90393?placeholderIfAbsent=true&apiKey=c282f1c67bc141efb15181803dafd5ff"
+                alt=""
+                className="object-contain shrink-0 aspect-[0.93] w-[39px]"
+              />
+              <h1 className="mt-2.5">COMMENTS</h1>
+            </button>
           </div>
           <div className="flex overflow-hidden gap-6 self-start pl-6 text-sm text-white rounded-md border border-black border-solid bg-zinc-800">
             <select
@@ -172,7 +177,7 @@ const CommentsPage: React.FC = () => {
         />
       </header>
       <AudioWaveform
-        audioUrl="/audio/Mk.gee - ROCKMAN (Official Audio) [ ezmp3.cc ].mp3"
+        audioUrl="/audio/guitar.mp3"
         isSelecting={isSelecting}
         onSelectionComplete={handleSelectionComplete}
         onCancel={() => setIsSelecting(false)}
