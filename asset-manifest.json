@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/JamCloud/static/css/main.99f84263.css",
-    "main.js": "/JamCloud/static/js/main.20b69b0f.js",
+    "main.js": "/JamCloud/static/js/main.b5875d80.js",
     "static/js/453.9fa2e511.chunk.js": "/JamCloud/static/js/453.9fa2e511.chunk.js",
     "static/media/Drag.svg": "/JamCloud/static/media/Drag.2aa04579d06d36ae25471653133bbe1c.svg",
     "static/media/Enhance.svg": "/JamCloud/static/media/Enhance.095772d19e89da73c04c8698aa98ad5f.svg",
@@ -27,11 +27,11 @@
     "static/media/RecordRed.svg": "/JamCloud/static/media/RecordRed.b7ee441bc64b3337dad53892da7a9644.svg",
     "static/media/Stop.svg": "/JamCloud/static/media/Stop.135d389692380a83ab4ea9446e29fbac.svg",
     "main.99f84263.css.map": "/JamCloud/static/css/main.99f84263.css.map",
-    "main.20b69b0f.js.map": "/JamCloud/static/js/main.20b69b0f.js.map",
+    "main.b5875d80.js.map": "/JamCloud/static/js/main.b5875d80.js.map",
     "453.9fa2e511.chunk.js.map": "/JamCloud/static/js/453.9fa2e511.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.99f84263.css",
-    "static/js/main.20b69b0f.js"
+    "static/js/main.b5875d80.js"
   ]
 }
